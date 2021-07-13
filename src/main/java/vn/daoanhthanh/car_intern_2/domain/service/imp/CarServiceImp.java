@@ -6,6 +6,8 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import lombok.RequiredArgsConstructor;
+import vn.daoanhthanh.car_intern_2.base.mapper.car.CreateCarRequestMapper;
 import vn.daoanhthanh.car_intern_2.domain.model.dto.CreateCarDTO;
 import vn.daoanhthanh.car_intern_2.domain.model.dto.UpdateCarDTO;
 import vn.daoanhthanh.car_intern_2.domain.model.entity.Car;
@@ -13,16 +15,15 @@ import vn.daoanhthanh.car_intern_2.domain.repository.CarRepo;
 import vn.daoanhthanh.car_intern_2.domain.service.CarService;
 
 @Service
+@RequiredArgsConstructor
 public class CarServiceImp implements CarService {
 
     private final CarRepo repository;
-
-    public CarServiceImp(CarRepo repository) {
-        this.repository = repository;
-    }
+    private final CreateCarRequestMapper createCarRequestMapper;
 
     @Override
-    public Car createCar(CreateCarDTO car) {
+    public Car createCar(CreateCarDTO carDTO) {
+        Car car = createCarRequestMapper.createRequestToCar(carDTO);
         return repository.save(car);
     }
 
@@ -47,7 +48,8 @@ public class CarServiceImp implements CarService {
     // }
 
     @Override
-    public Car updateCar(UpdateCarDTO car) {
+    public Car updateCar(UpdateCarDTO carDTO) {
+        Car car = createCarRequestMapper.updateRequestToCar(carDTO);
         return repository.save(car);
     }
 
