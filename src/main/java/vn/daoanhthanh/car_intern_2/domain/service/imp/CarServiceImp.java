@@ -6,10 +6,14 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+<<<<<<< HEAD
 import lombok.RequiredArgsConstructor;
 import vn.daoanhthanh.car_intern_2.base.mapper.car.CreateCarRequestMapper;
 import vn.daoanhthanh.car_intern_2.domain.model.dto.CreateCarDTO;
 import vn.daoanhthanh.car_intern_2.domain.model.dto.UpdateCarDTO;
+=======
+import vn.daoanhthanh.car_intern_2.domain.model.dtos.UpdateCarDTO;
+>>>>>>> 5132646ac6394f0d7952b797834a50f473a5f289
 import vn.daoanhthanh.car_intern_2.domain.model.entity.Car;
 import vn.daoanhthanh.car_intern_2.domain.repository.CarRepo;
 import vn.daoanhthanh.car_intern_2.domain.service.CarService;
@@ -25,11 +29,18 @@ public class CarServiceImp implements CarService {
         this.createCarRequestMapper = createCarRequestMapper;
     }
 
+<<<<<<< HEAD
     @Override
     public Car createCar(CreateCarDTO carDTO) {
         Car car = createCarRequestMapper.createRequestToCar(carDTO);
         return repository.save(car);
     }
+=======
+    // @Override
+    // public Car createCar(Car car) {
+    // return repository.save(car);
+    // }
+>>>>>>> 5132646ac6394f0d7952b797834a50f473a5f289
 
     @Override
     public List<Car> getAllCars() {
@@ -60,6 +71,12 @@ public class CarServiceImp implements CarService {
     @Override
     public void deleteCar(UUID id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public Car createCar(UpdateCarDTO car) {
+
+        return null;
     }
 
 }
