@@ -4,10 +4,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import vn.daoanhthanh.car_intern_2.domain.model.dtos.UpdateCarDTO;
 import vn.daoanhthanh.car_intern_2.domain.model.entity.Car;
 
 public interface CarService {
-    Car createCar(Car car);
+    Car createCar(UpdateCarDTO car);
 
     List<Car> getAllCars();
 
