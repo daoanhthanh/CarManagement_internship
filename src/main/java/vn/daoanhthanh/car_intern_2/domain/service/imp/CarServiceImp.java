@@ -6,6 +6,8 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import vn.daoanhthanh.car_intern_2.domain.model.dto.CreateCarDTO;
+import vn.daoanhthanh.car_intern_2.domain.model.dto.UpdateCarDTO;
 import vn.daoanhthanh.car_intern_2.domain.model.entity.Car;
 import vn.daoanhthanh.car_intern_2.domain.repository.CarRepo;
 import vn.daoanhthanh.car_intern_2.domain.service.CarService;
@@ -20,7 +22,7 @@ public class CarServiceImp implements CarService {
     }
 
     @Override
-    public Car createCar(Car car) {
+    public Car createCar(CreateCarDTO car) {
         return repository.save(car);
     }
 
@@ -45,7 +47,7 @@ public class CarServiceImp implements CarService {
     // }
 
     @Override
-    public Car updateCar(Car car) {
+    public Car updateCar(UpdateCarDTO car) {
         return repository.save(car);
     }
 
