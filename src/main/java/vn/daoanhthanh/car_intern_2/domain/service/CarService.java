@@ -1,23 +1,29 @@
 package vn.daoanhthanh.car_intern_2.domain.service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
-import vn.daoanhthanh.car_intern_2.domain.model.entity.Car;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+import vn.daoanhthanh.car_intern_2.domain.model.request.CreateCarRequest;
+import vn.daoanhthanh.car_intern_2.domain.model.request.UpdateCarRequest;
+import vn.daoanhthanh.car_intern_2.domain.model.response.CarResponse;
+import vn.daoanhthanh.car_intern_2.domain.model.response.CreateCarResponse;
+import vn.daoanhthanh.car_intern_2.domain.model.response.UpdateCarResponse;
 
 public interface CarService {
-    Car createCar(Car car);
+    ResponseEntity<CreateCarResponse> createCar(CreateCarRequest createCarRequest);
 
-    List<Car> getAllCars();
+    ResponseEntity<List<CarResponse>> getAllCars();
 
-    Optional<Car> getCarById(UUID id);
+    ResponseEntity<CarResponse> getCarById(UUID id);
 
     // List<Car> getCarByNameLike(String name);
     //
     // List<Car> getCarByOwner(UUID ownerId);
 
-    Car updateCar(Car car);
+    ResponseEntity<UpdateCarResponse> updateCar(UUID id, UpdateCarRequest updateCarRequest);
 
-    void deleteCar(UUID id);
+    ResponseEntity<HttpStatus> deleteCar(UUID id);
 }
