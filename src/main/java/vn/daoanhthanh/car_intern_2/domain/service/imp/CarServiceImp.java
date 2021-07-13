@@ -15,11 +15,15 @@ import vn.daoanhthanh.car_intern_2.domain.repository.CarRepo;
 import vn.daoanhthanh.car_intern_2.domain.service.CarService;
 
 @Service
-@RequiredArgsConstructor
 public class CarServiceImp implements CarService {
 
     private final CarRepo repository;
     private final CreateCarRequestMapper createCarRequestMapper;
+
+    public CarServiceImp(CarRepo repository, CreateCarRequestMapper createCarRequestMapper) {
+        this.repository = repository;
+        this.createCarRequestMapper = createCarRequestMapper;
+    }
 
     @Override
     public Car createCar(CreateCarDTO carDTO) {
