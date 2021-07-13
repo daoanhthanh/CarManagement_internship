@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.time.LocalDateTime;
+// import java.time.LocalDateTime;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
+import vn.daoanhthanh.car_intern_2.domain.model.dto.CreateCarDTO;
+import vn.daoanhthanh.car_intern_2.domain.model.dto.UpdateCarDTO;
 import vn.daoanhthanh.car_intern_2.domain.model.entity.Car;
 import vn.daoanhthanh.car_intern_2.domain.service.CarService;
 
@@ -54,31 +56,22 @@ public class CarController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    public ResponseEntity<Car> createCar(@RequestBody Car car) {
+    public ResponseEntity<Car> createCar(@RequestBody CreateCarDTO createCarDTO) {
         try {
-            Car _car = carService.createCar(new Car(car.getModel(), car.getCarType(), car.getSeat(),
-                    car.getRegistrationNumber(), car.getCylinderCapacity(), car.getTransmission(), car.getEngineID(),
-                    car.getOwnerID(), LocalDateTime.now(), LocalDateTime.now()));
-            return new ResponseEntity<>(_car, HttpStatus.CREATED);
+
+            return new ResponseEntity<>(carService.createCar(createCarDTO), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Car> updateCar(@PathVariable("id") UUID id, @RequestBody Car car) {
+    public ResponseEntity<Car> updateCar(@PathVariable("id") UUID id, @RequestBody UpdateCarDTO updateCarDTO) {
         Optional<Car> carData = carService.getCarById(id);
 
         if (carData.isPresent()) {
-            Car _car = carData.get();
-            _car.setModel(car.getModel());
-            _car.setSeat(car.getSeat());
-            _car.setRegistrationNumber(car.getRegistrationNumber());
-            _car.setEngineID(car.getEngineID());
-            _car.setOwnerID(car.getOwnerID());
-            _car.setCreatedAt(car.getCreatedAt());
-            _car.setUpdatedAt(LocalDateTime.now());
-            return new ResponseEntity<>(carService.updateCar(_car), HttpStatus.OK);
+
+            return new ResponseEntity<>(carService.updateCar(updateCarDTO), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
