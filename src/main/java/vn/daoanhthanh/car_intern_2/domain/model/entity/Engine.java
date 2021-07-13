@@ -29,7 +29,7 @@ public class Engine implements TimeStamps {
     @Id
     @GenericGenerator(name = "UUIDGenerator", strategy = "uuid2")
     @GeneratedValue(generator = "UUIDGenerator")
-    @Column( updatable = false, nullable = false)
+    @Column(updatable = false, nullable = false)
     private UUID id;
 
     private String engineCode;
