@@ -3,7 +3,7 @@ package vn.daoanhthanh.car_intern_2.base;
 import java.util.List;
 
 import org.mapstruct.Mapper;
-
+import org.mapstruct.factory.Mappers;
 import vn.daoanhthanh.car_intern_2.domain.model.entity.Car;
 import vn.daoanhthanh.car_intern_2.domain.model.request.CreateCarRequest;
 import vn.daoanhthanh.car_intern_2.domain.model.request.UpdateCarRequest;
@@ -13,6 +13,8 @@ import vn.daoanhthanh.car_intern_2.domain.model.response.UpdateCarResponse;
 
 @Mapper
 public interface CarMapper {
+
+    CarMapper INSTANCE = Mappers.getMapper(CarMapper.class);
     // create
     Car mapCreateRequestToCar(CreateCarRequest createCarRequest);
 
@@ -26,4 +28,5 @@ public interface CarMapper {
     List<CarResponse> mapListCarToResponse(List<Car> cars);
 
     CarResponse mapCarToCarResponse(Car car);
-}
+
+} 

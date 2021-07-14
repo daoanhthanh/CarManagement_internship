@@ -1,9 +1,6 @@
 package vn.daoanhthanh.car_intern_2.domain.model.entity;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import vn.daoanhthanh.car_intern_2.base.TimeStamps;
 import vn.daoanhthanh.car_intern_2.domain.model.entity.component.CarType;
 import vn.daoanhthanh.car_intern_2.domain.model.entity.component.Transmission;
@@ -24,6 +21,7 @@ import java.util.UUID;
 @Setter
 @ToString
 @Builder(toBuilder = true)
+@NoArgsConstructor
 public class Car implements TimeStamps {
     @Id
     // @GenericGenerator(name = "UUIDGenerator", strategy = "UUID2")
