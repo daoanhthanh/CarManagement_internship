@@ -7,6 +7,6 @@ import vn.daoanhthanh.car_intern_2.domain.model.entity.Engine;
 import java.util.UUID;
 
 @Repository
-public interface EngineRepositoty extends JpaRepository<Engine, UUID> {
+public interface EngineRepository extends JpaRepository<Engine, UUID> {
 
 }

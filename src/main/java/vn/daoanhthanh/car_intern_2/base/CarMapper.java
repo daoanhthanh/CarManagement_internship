@@ -12,7 +12,6 @@ import vn.daoanhthanh.car_intern_2.domain.model.response.CreateCarResponse;
 import vn.daoanhthanh.car_intern_2.domain.model.response.UpdateCarResponse;
 
 @Mapper
-// @Component
 public interface CarMapper {
 
     CarMapper INSTANCE = Mappers.getMapper(CarMapper.class);
